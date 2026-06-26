@@ -29,8 +29,8 @@ Follow these steps to build, run, and test the secure environment.
 ### Step 1: Clone the Repository
 Navigate to your working directory and clone the project codebase:
 ```bash
-git clone <your-github-repository-url>
-cd <your-project-folder>
+git clone <https://github.com/FBColdBrew/Group37_Assignment2_Database-CloudSecurity>
+cd https://github.com/FBColdBrew/Group37_Assignment2_Database-CloudSecurity
 ```
 
 Built a secure Docker image
