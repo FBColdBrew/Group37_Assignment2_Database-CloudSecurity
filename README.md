@@ -30,7 +30,7 @@ Follow these steps to build, run, and test the secure environment.
 ### Step 1: Clone the Repository
 Navigate to your working directory and clone the project codebase:
 ```bash
-git clone [https://github.com/FBColdBrew/Group37_Assignment2_Database-CloudSecurity](https://github.com/FBColdBrew/Group37_Assignment2_Database-CloudSecurity)
+git clone [https://github.com/FBColdBrew/Group37_Assignment2_Database-CloudSecurity]
 cd Group37_Assignment2_Database-CloudSecurity
 ```
 
