@@ -10,7 +10,7 @@ A containerized, secure Flask web application built as part of a cloud migration
 ##  Architectural Overview
 * **Application Tier:** Containerized Flask microservice compiled inside a lightweight Docker container.
 * **Data Transit Security:** Data is end-to-end encrypted locally via an ad-hoc SSL context (`pyOpenSSL`) generated inside the container on runtime.
-* **Network Security:** Multi-tier perimeter defense isolating administrative entry points (Ports 22 and 1433) while routing authorized web traffic safely.
+* **Network Security:** Multi-tier perimeter defense isolating administrative entry points (Ports 22 and 1433) while routing authorized web traffic safely. Port 5000 for localhost
 
 ---
 
@@ -19,6 +19,7 @@ Before running the application, ensure your machine has the following software i
 * **Docker Desktop** (or Docker Engine via CLI)
 * **Python 3.9+** (if running locally outside a container for development)
 * Web browser (Chrome, Firefox, or Edge)
+* SSMS on your desktop for database
 
 ---
 
