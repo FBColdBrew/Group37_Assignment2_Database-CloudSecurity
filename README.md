@@ -30,20 +30,23 @@ Follow these steps to build, run, and test the secure environment.
 ### Step 1: Clone the Repository
 Navigate to your working directory and clone the project codebase:
 ```bash
-git clone <https://github.com/FBColdBrew/Group37_Assignment2_Database-CloudSecurity>
-cd https://github.com/FBColdBrew/Group37_Assignment2_Database-CloudSecurity
+git clone [https://github.com/FBColdBrew/Group37_Assignment2_Database-CloudSecurity](https://github.com/FBColdBrew/Group37_Assignment2_Database-CloudSecurity)
+cd Group37_Assignment2_Database-CloudSecurity
 ```
 
-Built a secure Docker image
+### Step 2: Built a secure Docker image
+Compile the application environment using the provided Dockerfile. This wraps the application code along with the required dependencies
 
 ```bash
 docker build -t library-web-app .
 ```
 
-Spin Up the Containerized Instance
-Run the Docker container in detached mode, mapping the internal application service to port 5000 on your host machine:
+### Step 3: Spin Up the Containerized Instance
+Run the Docker container in detached mode, mapping the internal application service to port 5000 on your host machine
 
 ```bash
 docker run -d -p 5000:5000 --name library-app-secure library-web-app
 ```
+
+
 
