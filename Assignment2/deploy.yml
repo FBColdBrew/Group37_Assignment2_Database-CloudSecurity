@@ -1,0 +1,56 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Group 37 Library System - 30GB Storage Server
+
+Resources:
+  SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow Web (5000), SQL (1433), and SSH (22)
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 5000
+          ToPort: 5000
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 1433
+          ToPort: 1433
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+
+  LibraryServer:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.medium
+      IamInstanceProfile: LabInstanceProfile
+      ImageId: '{{resolve:ssm:/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64}}'
+      SecurityGroupIds:
+        - !Ref SecurityGroup
+      BlockDeviceMappings:
+        - DeviceName: /dev/xvda
+          Ebs:
+            VolumeSize: 30
+            VolumeType: gp2
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          yum update -y
+          yum install docker -y
+          systemctl start docker
+          systemctl enable docker
+          
+          docker network create group37-net
+          docker run -d --name sql-server --net group37-net -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Group37Secure!" -p 1433:1433 mcr.microsoft.com/mssql/server:2019-latest
+          
+          sleep 15
+          docker run -d --name web-app --net group37-net -p 5000:5000 isonokik/group37-library:latest
+
+Outputs:
+  ServerIP:
+    Description: "Your EC2 Public IP for Database Connection"
+    Value: !GetAtt LibraryServer.PublicIp
+  WebsiteURL:
+    Description: "Your Live Website"
+    Value: !Sub "http://${LibraryServer.PublicDnsName}:5000"
