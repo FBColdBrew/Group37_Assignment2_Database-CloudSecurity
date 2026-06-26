@@ -31,13 +31,18 @@ Navigate to your working directory and clone the project codebase:
 ```bash
 git clone <your-github-repository-url>
 cd <your-project-folder>
+```
 
 Built a secure Docker image
 
+```bash
 docker build -t library-web-app .
+```
 
 Spin Up the Containerized Instance
 Run the Docker container in detached mode, mapping the internal application service to port 5000 on your host machine:
 
+```bash
 docker run -d -p 5000:5000 --name library-app-secure library-web-app
+```
 
