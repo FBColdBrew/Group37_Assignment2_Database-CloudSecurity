@@ -43,7 +43,7 @@ aws sts get-caller-identity
 ### Step 3: Provision Cloud Infrastructure (AWS)
 To deploy the secure AWS environment (VPC, ECS, Security Groups) used in the cloud architecture, execute the included Infrastructure as Code template
 ```bash
-aws cloudformation deploy --template-file deploy.yml --stack-name Group37LibraryStackV5 --region us-east-1
+aws cloudformation deploy --template-file deploy.yml --stack-name Group37Library --region us-east-1
 ```
 
 ### Step 4: Running the connection with the sandbox
