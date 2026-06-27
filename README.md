@@ -49,7 +49,7 @@ aws cloudformation deploy --template-file deploy.yml --stack-name Group37Library
 ### Step 4: Running the connection with the sandbox
 After getting the web browser http, copy and paste into new browser and copy the ip and run it in ssms, it will differ when running new sandbox
 ```bash
-aws cloudformation describe-stacks --stack-name Group37LibraryStackV5 --query "Stacks[0].Outputs[*].OutputValue" --output text --region us-east-1
+aws cloudformation describe-stacks --stack-name Group37Library --query "Stacks[0].Outputs[*].OutputValue" --output text --region us-east-1
 ```
 
 ### Step 5: Built a secure Docker image
